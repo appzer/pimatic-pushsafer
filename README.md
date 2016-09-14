@@ -1,4 +1,4 @@
-pushsafer-pimatic
+pimatic-pushsafer
 =======================
 
 ![Pushsafer](https://www.pushsafer.com/de/assets/logos/logo.png)
