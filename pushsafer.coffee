@@ -13,7 +13,7 @@ module.exports = (env) ->
   assert = env.require 'cassert'
   util = env.require 'util'
   M = env.matcher
-  # Require the [pushsafer-notifications](https://github.com/appzer/pushsafer-nodeJS) library
+  # Require the [pushsafer-notifications](https://github.com/appzer/nodeJS-pushsafer) library
   Pushsafer = require 'pushsafer-notifications'
   Promise.promisifyAll(Pushsafer.prototype)
 
