@@ -1,5 +1,5 @@
 {
-  "name": "pushsafer-pimatic",
+  "name": "pimatic-pushsafer",
   "description": "Plugin to send Pushsafer notifications in pimatic",
   "author": "Kevin Siml <info@appzer.de>",
   "license": "GPL-2.0",
