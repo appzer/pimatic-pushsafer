@@ -48,11 +48,11 @@ module.exports = (env) ->
       defaultTitle = @config.title
       defaultMessage = @config.message
       defaultSound = @config.sound
-	  defaultIcon = @config.icon
-	  defaultVibration = @config.vibration
-	  defaultURL = @config.url
-	  defaultURLTitle = @config.urltitle
-	  defaultTime2Live = @config.time2live
+      defaultIcon = @config.icon
+      defaultVibration = @config.vibration
+      defaultURL = @config.url
+      defaultURLTitle = @config.urltitle
+      defaultTime2Live = @config.time2live
       defaultDevice = @config.device
       
       # Helper to convert 'some text' to [ '"some text"' ]
@@ -61,22 +61,22 @@ module.exports = (env) ->
       titleTokens = strToTokens defaultTitle
       messageTokens = strToTokens defaultMessage
       sound = defaultSound
-	  icon = defaultIcon
-	  vibration = defaultVibration
-	  url = defaultURL
-	  urltitle = defaultURLTitle
-	  time2live = defaultTime2Live
+      icon = defaultIcon
+      vibration = defaultVibration
+      url = defaultURL
+      urltitle = defaultURLTitle
+      time2live = defaultTime2Live
       device = defaultDevice
 
       setTitle = (m, tokens) => titleTokens = tokens
       setMessage = (m, tokens) => messageTokens = tokens
       setDevice = (m, d) => device = d
       setSound = (m, d) => sound = d
-	  setIcon = (m, d) => icon = d
-	  setVibration = (m, d) => vibration = d
-	  setURL = (m, d) => url = d
-	  setURLTitle = (m, d) => urltitle = d
-	  setTime2Live = (m, d) => time2live = d
+      setIcon = (m, d) => icon = d
+      setVibration = (m, d) => vibration = d
+      setURL = (m, d) => url = d
+      setURLTitle = (m, d) => urltitle = d
+      setTime2Live = (m, d) => time2live = d
 
       m = M(input, context)
         .match('send ', optional: yes)
@@ -90,25 +90,25 @@ module.exports = (env) ->
 
       next = m.match(' device:').matchString(setDevice)
       if next.hadMatch() then m = next
-      
+
       next = m.match(' sound:').matchString(setSound)
       if next.hadMatch() then m = next
-	  
+
       next = m.match(' icon:').matchString(setIcon)
       if next.hadMatch() then m = next
 
-	  next = m.match(' vibration:').matchString(setVibration)
+      next = m.match(' vibration:').matchString(setVibration)
       if next.hadMatch() then m = next
-	  
-	  next = m.match(' url:').matchString(setURL)
+
+     next = m.match(' url:').matchString(setURL)
       if next.hadMatch() then m = next
-	  
-	  next = m.match(' urltitle:').matchString(setURLTitle)
+
+      next = m.match(' urltitle:').matchString(setURLTitle)
       if next.hadMatch() then m = next
-	  
-	  next = m.match(' time2live:').matchString(setTime2Live)
+
+      next = m.match(' time2live:').matchString(setTime2Live)
       if next.hadMatch() then m = next	  
-	  
+
       if m.hadMatch()
         match = m.getFullMatch()
 
@@ -142,12 +142,12 @@ module.exports = (env) ->
                 m: message
                 t: title
                 s: @sound
-				v: @vibration
-				i: @icon
-				d: @device
-				u: @url
-				ut: @urltitle
-				l: @time2live
+		v: @vibration
+		i: @icon
+		d: @device
+		u: @url
+		ut: @urltitle
+		l: @time2live
             }            
 
           msg.d = @d if @d? and @d.length > 0
