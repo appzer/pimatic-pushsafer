@@ -100,7 +100,7 @@ module.exports = (env) ->
       next = m.match(' vibration:').matchString(setVibration)
       if next.hadMatch() then m = next
 
-     next = m.match(' url:').matchString(setURL)
+      next = m.match(' url:').matchString(setURL)
       if next.hadMatch() then m = next
 
       next = m.match(' urltitle:').matchString(setURLTitle)
