@@ -50,6 +50,9 @@ module.exports = (env) ->
       defaultSound = @config.sound
 	  defaultIcon = @config.icon
 	  defaultVibration = @config.vibration
+	  defaultURL = @config.url
+	  defaultURLTitle = @config.urltitle
+	  defaultTime2Live = @config.time2live
       defaultDevice = @config.device
       
       # Helper to convert 'some text' to [ '"some text"' ]
@@ -60,14 +63,20 @@ module.exports = (env) ->
       sound = defaultSound
 	  icon = defaultIcon
 	  vibration = defaultVibration
+	  url = defaultURL
+	  urltitle = defaultURLTitle
+	  time2live = defaultTime2Live
       device = defaultDevice
 
       setTitle = (m, tokens) => titleTokens = tokens
       setMessage = (m, tokens) => messageTokens = tokens
       setDevice = (m, d) => device = d
       setSound = (m, d) => sound = d
-	  setIcon = (m, d) => sound = d
-	  setVibration = (m, d) => sound = d
+	  setIcon = (m, d) => icon = d
+	  setVibration = (m, d) => vibration = d
+	  setURL = (m, d) => url = d
+	  setURLTitle = (m, d) => urltitle = d
+	  setTime2Live = (m, d) => time2live = d
 
       m = M(input, context)
         .match('send ', optional: yes)
@@ -91,6 +100,15 @@ module.exports = (env) ->
 	  next = m.match(' vibration:').matchString(setVibration)
       if next.hadMatch() then m = next
 	  
+	  next = m.match(' url:').matchString(setURL)
+      if next.hadMatch() then m = next
+	  
+	  next = m.match(' urltitle:').matchString(setURLTitle)
+      if next.hadMatch() then m = next
+	  
+	  next = m.match(' time2live:').matchString(setTime2Live)
+      if next.hadMatch() then m = next	  
+	  
       if m.hadMatch()
         match = m.getFullMatch()
 
@@ -101,14 +119,14 @@ module.exports = (env) ->
           privatekey: match
           nextInput: input.substring(match.length)
           actionHandler: new PushsaferActionHandler(
-            @framework, titleTokens, messageTokens, sound, device, icon, vibration
+            @framework, titleTokens, messageTokens, sound, device, icon, vibration, url, urltitle, time2live
           )
         }
             
 
   class PushsaferActionHandler extends env.actions.ActionHandler 
 
-    constructor: (@framework, @titleTokens, @messageTokens, @sound, @device, @icon, @vibration) ->
+    constructor: (@framework, @titleTokens, @messageTokens, @sound, @device, @icon, @vibration, @url, @urltitle, @time2live) ->
 
     executeAction: (simulate, context) ->
       Promise.all( [
@@ -127,6 +145,9 @@ module.exports = (env) ->
 				v: @vibration
 				i: @icon
 				d: @device
+				u: @url
+				ut: @urltitle
+				l: @time2live
             }            
 
           msg.d = @d if @d? and @d.length > 0
