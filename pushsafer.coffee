@@ -142,13 +142,13 @@ module.exports = (env) ->
                 m: message
                 t: title
                 s: @sound
-		v: @vibration
-		i: @icon
-		d: @device
-		u: @url
-		ut: @urltitle
-		l: @time2live
-            }            
+                v: @vibration
+                i: @icon
+                d: @device
+                u: @url
+                ut: @urltitle
+                l: @time2live
+            }
 
           msg.d = @d if @d? and @d.length > 0
 
