@@ -116,7 +116,7 @@ module.exports = (env) ->
         assert Array.isArray(messageTokens)
 
         return {
-          privatekey: match
+          token: match
           nextInput: input.substring(match.length)
           actionHandler: new PushsaferActionHandler(
             @framework, titleTokens, messageTokens, sound, device, icon, vibration, url, urltitle, time2live
@@ -142,13 +142,13 @@ module.exports = (env) ->
                 m: message
                 t: title
                 s: @sound
-		v: @vibration
-		i: @icon
-		d: @device
-		u: @url
-		ut: @urltitle
-		l: @time2live
-            }            
+                v: @vibration
+                i: @icon
+                d: @device
+                u: @url
+                ut: @urltitle
+                l: @time2live
+            }
 
           msg.d = @d if @d? and @d.length > 0
 
