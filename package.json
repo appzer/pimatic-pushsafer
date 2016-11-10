@@ -10,7 +10,7 @@
     "LICENSE",
     "pushsafer-config-schema.coffee"
   ],
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/appzer/pimatic-pushsafer",
   "repository": {
     "type": "git",
