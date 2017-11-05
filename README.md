@@ -32,10 +32,10 @@ Example:
 
 titleTokens, messageTokens, sound, device, icon, vibration
 
-    if it is 08:00 push title:"Good morning!" message:"Time to get out of bed!" sound:"11" device:"312" icon:"4" vibration:"2" url:"https://www.pushsafer.com" urltitle:"Open Pushsafer.com" time2live:"60"
+    if it is 08:00 push title:"Good morning!" message:"Time to get out of bed!" sound:"11" device:"312" icon:"4" iconcolor:"#00FF00" vibration:"2" url:"https://www.pushsafer.com" urltitle:"Open Pushsafer.com" time2live:"60"
 
 in general: if X then push
 
-    title:"title of the push notification" message:"message of the notification" sound:"11" device:"312" icon:"4" vibration:"2" url:"https://www.pushsafer.com" urltitle:"Open Pushsafer.com" time2live:"60"
+    title:"title of the push notification" message:"message of the notification" sound:"11" device:"312" icon:"4" iconcolor:"#FF0000" vibration:"2" url:"https://www.pushsafer.com" urltitle:"Open Pushsafer.com" time2live:"60"
 
 Find API description here at [pushsafer api](https://www.pushsafer.com/de/pushapi) to set up your push notification!
