@@ -49,6 +49,7 @@ module.exports = (env) ->
       defaultMessage = @config.message
       defaultSound = @config.sound
       defaultIcon = @config.icon
+      defaultIconColor = @config.iconcolor
       defaultVibration = @config.vibration
       defaultURL = @config.url
       defaultURLTitle = @config.urltitle
@@ -62,6 +63,7 @@ module.exports = (env) ->
       messageTokens = strToTokens defaultMessage
       sound = defaultSound
       icon = defaultIcon
+      iconcolor = defaultIconColor
       vibration = defaultVibration
       url = defaultURL
       urltitle = defaultURLTitle
@@ -73,6 +75,7 @@ module.exports = (env) ->
       setDevice = (m, d) => device = d
       setSound = (m, d) => sound = d
       setIcon = (m, d) => icon = d
+      setIconColor = (m, d) => iconcolor = d
       setVibration = (m, d) => vibration = d
       setURL = (m, d) => url = d
       setURLTitle = (m, d) => urltitle = d
@@ -95,6 +98,9 @@ module.exports = (env) ->
       if next.hadMatch() then m = next
 
       next = m.match(' icon:').matchString(setIcon)
+      if next.hadMatch() then m = next
+      
+      next = m.match(' iconcolor:').matchString(setIconColor)
       if next.hadMatch() then m = next
 
       next = m.match(' vibration:').matchString(setVibration)
@@ -119,14 +125,14 @@ module.exports = (env) ->
           token: match
           nextInput: input.substring(match.length)
           actionHandler: new PushsaferActionHandler(
-            @framework, titleTokens, messageTokens, sound, device, icon, vibration, url, urltitle, time2live
+            @framework, titleTokens, messageTokens, sound, device, icon, iconcolor, vibration, url, urltitle, time2live
           )
         }
             
 
   class PushsaferActionHandler extends env.actions.ActionHandler 
 
-    constructor: (@framework, @titleTokens, @messageTokens, @sound, @device, @icon, @vibration, @url, @urltitle, @time2live) ->
+    constructor: (@framework, @titleTokens, @messageTokens, @sound, @device, @icon, @iconcolor, @vibration, @url, @urltitle, @time2live) ->
 
     executeAction: (simulate, context) ->
       Promise.all( [
@@ -144,6 +150,7 @@ module.exports = (env) ->
                 s: @sound
                 v: @vibration
                 i: @icon
+                c: @iconcolor
                 d: @device
                 u: @url
                 ut: @urltitle
