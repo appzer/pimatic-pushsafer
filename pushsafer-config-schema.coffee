@@ -24,6 +24,10 @@ module.exports = {
       description: "Icon for the notification, see https://www.pushsafer.com/en/pushapi"
       type: "string"
       default: "1"
+    iconcolor: #might be overwritten by predicate
+      description: "Icon Color, leave empty as default or a Hexadecimal Colorcode, Example: #FF0000"
+      type: "string"
+      default: ""  
     vibration: #might be overwritten by predicate
       description: "Vibration for the notification, see https://www.pushsafer.com/en/pushapi"
       type: "string"
