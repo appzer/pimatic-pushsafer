@@ -44,6 +44,24 @@ module.exports = {
       description: "Integer number 0-43200: Time in minutes, after which message automatically gets purged."
       type: "string"
       default: ""  
+  
+    priority: #might be overwritten by predicate
+        description: "Integer number -2, -1, 0, 1, 2"
+        type: "string"
+        default: ""  
+    retry: #might be overwritten by predicate
+        description: "Integer number 60-10800: Time in seconds, after the message is resend."
+        type: "string"
+        default: ""  
+    expire: #might be overwritten by predicate
+        description: "Integer number 60-10800: Time in seconds, after retry is canceling."
+        type: "string"
+        default: ""  
+    answer: #might be overwritten by predicate
+        description: "Integer number 1 = answer is possible or 0 = answer is not possible."
+        type: "string"
+        default: ""  
+
     device: #might be overwritten by predicate
       description: "device or device group id to send the notification to"
       type: "string"
