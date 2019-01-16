@@ -1,11 +1,13 @@
 pimatic-pushsafer
 =======================
 
+Download: [https://github.com/appzer/pimatic-pushsafer](https://github.com/appzer/pimatic-pushsafer)
+
 ![Pushsafer](https://www.pushsafer.com/de/assets/logos/logo.png)
 
 A plugin for sending [pushsafer.com](https://www.pushsafer.net/) notifications in pimatic.
 
-Forked from and original created by: [thexperiments](https://github.com/thexperiments/pimatic-pushover)
+Forked from and original created by: thexperiments
 
 Pushsafer make it easy and safe to get push-notifications in real time on your
 - Android device
