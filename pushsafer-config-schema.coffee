@@ -56,10 +56,22 @@ module.exports = {
         description: "Integer number 60-10800: Time in seconds, after retry is canceling."
         type: "string"
         default: ""  
+    confirm: #might be overwritten by predicate
+        description: "Integer number 10-10800: Time in seconds, after the message is resend until it is confirmed."
+        type: "string"
+        default: ""  
     answer: #might be overwritten by predicate
         description: "Integer number 1 = answer is possible or 0 = answer is not possible."
         type: "string"
-        default: ""  
+        default: ""
+    answeroptions: #might be overwritten by predicate
+        description: "specify predefined answer options divided by a pipe character, e.g. Yes|No|Maybe"
+        type: "string"
+        default: ""
+    answerforce: #might be overwritten by predicate
+        description: "Integer number 1 = forca answer or 0 = do not force answer."
+        type: "string"
+        default: ""
     device: #might be overwritten by predicate
       description: "device or device group id to send the notification to"
       type: "string"
