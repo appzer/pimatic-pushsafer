@@ -13,7 +13,8 @@ Pushsafer make it easy and safe to get push-notifications in real time on your
 - Android device
 - iOS device (incl. iPhone, iPad, iPod Touch)
 - Windows Phone & Desktop
-- Browser (Chrome & Firefox)
+- Browser (Chrome, Firefox, Edge, Opera & Yandex)
+- Telegram
 
 Configuration
 -------------
@@ -34,10 +35,10 @@ Example:
 
 titleTokens, messageTokens, sound, device, icon, vibration
 
-    if it is 08:00 push title:"Good morning!" message:"Time to get out of bed!" sound:"11" device:"312" icon:"4" iconcolor:"#00FF00" vibration:"2" url:"https://www.pushsafer.com" urltitle:"Open Pushsafer.com" time2live:"1000" priority:"2" retry:"60" expire:"600" answer:"1"
+    if it is 08:00 push title:"Good morning!" message:"Time to get out of bed!" sound:"11" device:"312" icon:"4" iconcolor:"#00FF00" vibration:"2" url:"https://www.pushsafer.com" urltitle:"Open Pushsafer.com" time2live:"1000" priority:"2" retry:"60" expire:"600" confirm:"10" answer:"1" answeroptions:"yes|no|maybe" answerforce:"1"
 
 in general: if X then push
 
-    title:"title of the push notification" message:"message of the notification" sound:"11" device:"312" icon:"4" iconcolor:"#FF0000" vibration:"2" url:"https://www.pushsafer.com" urltitle:"Open Pushsafer.com" time2live:"60" priority:"2" retry:"60" expire:"600" answer:"1"
+    title:"title of the push notification" message:"message of the notification" sound:"11" device:"312" icon:"4" iconcolor:"#FF0000" vibration:"2" url:"https://www.pushsafer.com" urltitle:"Open Pushsafer.com" time2live:"60" priority:"2" retry:"60" expire:"600" confirm:"10" answer:"1" answeroptions:"yes|no|maybe" answerforce:"1"
 
 Find API description here at [pushsafer api](https://www.pushsafer.com/de/pushapi) to set up your push notification!
