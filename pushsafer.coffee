@@ -57,7 +57,10 @@ module.exports = (env) ->
       defaultPriority = @config.priority
       defaultRetry = @config.retry
       defaultExpire = @config.expire
+      defaultConfirm = @config.confirm
       defaultAnswer = @config.answer
+      defaultAnswerOptions = @config.answeroptions
+      defaultAnswerForce = @config.answerforce
       defaultDevice = @config.device
       
       # Helper to convert 'some text' to [ '"some text"' ]
@@ -75,7 +78,10 @@ module.exports = (env) ->
       priority = defaultPriority
       retry = defaultRetry
       expire = defaultExpire
+      confirm = defaultConfirm
       answer = defaultAnswer
+      answeroptions = defaultAnswerOptions
+      answerforce = defaultAnswerForce
       device = defaultDevice
 
       setTitle = (m, tokens) => titleTokens = tokens
@@ -91,7 +97,10 @@ module.exports = (env) ->
       setPriority = (m, d) => priority = d
       setRetry = (m, d) => retry = d
       setExpire = (m, d) => expire = d
+      setConfirm = (m, d) => confirm = d
       setAnswer = (m, d) => answer = d
+      setAnswerOptions = (m, d) => answeroptions = d
+      setAnswerForce = (m, d) => answerforce = d
 
       m = M(input, context)
         .match('send ', optional: yes)
@@ -136,7 +145,16 @@ module.exports = (env) ->
       next = m.match(' expire:').matchString(setExpire)
       if next.hadMatch() then m = next	  
       
+      next = m.match(' confirm:').matchString(setConfirm)
+      if next.hadMatch() then m = next	  
+      
       next = m.match(' answer:').matchString(setAnswer)
+      if next.hadMatch() then m = next	  
+      
+      next = m.match(' answeroptions:').matchString(setAnswerOptions)
+      if next.hadMatch() then m = next	  
+      
+      next = m.match(' answerforce:').matchString(setAnswerForce)
       if next.hadMatch() then m = next	  
 
       if m.hadMatch()
@@ -149,14 +167,14 @@ module.exports = (env) ->
           token: match
           nextInput: input.substring(match.length)
           actionHandler: new PushsaferActionHandler(
-            @framework, titleTokens, messageTokens, sound, device, icon, iconcolor, vibration, url, urltitle, time2live, priority, retry, expire, answer
+            @framework, titleTokens, messageTokens, sound, device, icon, iconcolor, vibration, url, urltitle, time2live, priority, retry, expire, confirm, answer, answeroptions, answerforce
           )
         }
             
 
   class PushsaferActionHandler extends env.actions.ActionHandler 
 
-    constructor: (@framework, @titleTokens, @messageTokens, @sound, @device, @icon, @iconcolor, @vibration, @url, @urltitle, @time2live, @priority, @retry, @expire, @answer) ->
+    constructor: (@framework, @titleTokens, @messageTokens, @sound, @device, @icon, @iconcolor, @vibration, @url, @urltitle, @time2live, @priority, @retry, @expire, @confirm, @answer, @answeroptions, @answerforce) ->
 
     executeAction: (simulate, context) ->
       Promise.all( [
@@ -182,7 +200,10 @@ module.exports = (env) ->
                 pr: @priority
                 re: @retry
                 ex: @expire
+                cr: @confirm
                 a: @answer
+                ao: @answeroptions
+                af: @answerforce
             }
 
           msg.d = @d if @d? and @d.length > 0
